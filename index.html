@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ERRORX Sound Booster</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERRORX ENGINE</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,9 +15,9 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-scroll-behavior:smooth;
+html,body{
 overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
 body{
@@ -25,87 +25,124 @@ background:#000;
 font-family:'Orbitron',sans-serif;
 color:white;
 min-height:100vh;
+padding:20px;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:20px;
-overflow-x:hidden;
+position:relative;
 }
 
-/* BACKGROUND GLOW */
+/* BACKGROUND */
 
 .bg{
 position:fixed;
-width:400px;
-height:400px;
+width:350px;
+height:350px;
 border-radius:50%;
-background:red;
 filter:blur(120px);
-opacity:0.15;
+opacity:0.18;
 z-index:-1;
-animation:move 8s infinite alternate ease-in-out;
-}
-
-.bg2{
-right:-100px;
-bottom:-100px;
+animation:float 8s infinite alternate ease-in-out;
 }
 
 .bg1{
-left:-100px;
+background:red;
 top:-100px;
+left:-100px;
 }
 
-@keyframes move{
-0%{transform:translate(0,0);}
-100%{transform:translate(40px,40px);}
+.bg2{
+background:cyan;
+bottom:-100px;
+right:-100px;
 }
 
-/* MAIN BOX */
+@keyframes float{
+0%{
+transform:translate(0,0);
+}
+100%{
+transform:translate(40px,40px);
+}
+}
+
+/* MAIN */
 
 .container{
 width:100%;
-max-width:500px;
+max-width:520px;
 background:#050505;
 border:2px solid red;
+border-radius:20px;
+padding:22px;
 box-shadow:
 0 0 15px red,
-0 0 40px rgba(255,0,0,0.6);
-padding:25px;
-border-radius:18px;
+0 0 40px rgba(255,0,0,0.5);
 overflow:hidden;
 }
 
 /* LOGO */
 
 .logo{
-text-align:center;
 font-size:3rem;
 font-weight:900;
-color:#ff0000;
-position:relative;
+text-align:center;
 margin-bottom:10px;
+color:red;
+letter-spacing:3px;
+
 text-shadow:
-2px 0 cyan,
--2px 0 red;
+0 0 5px red,
+0 0 15px red,
+2px 0 cyan;
+
 animation:glitch 1s infinite;
 }
 
 @keyframes glitch{
+
 0%{transform:translate(0);}
 20%{transform:translate(-2px,2px);}
-40%{transform:translate(-2px,-2px);}
-60%{transform:translate(2px,2px);}
-80%{transform:translate(2px,-2px);}
+40%{transform:translate(2px,-2px);}
+60%{transform:translate(-2px,-1px);}
+80%{transform:translate(2px,1px);}
 100%{transform:translate(0);}
+
 }
 
 .sub{
 text-align:center;
+font-size:13px;
 color:#aaa;
+line-height:1.7;
 margin-bottom:20px;
-font-size:14px;
-line-height:1.6;
+}
+
+/* WOW EFFECT */
+
+.wow{
+text-align:center;
+font-size:22px;
+color:#00ff99;
+margin-bottom:15px;
+text-shadow:0 0 15px #00ff99;
+animation:wowpulse 1.2s infinite;
+}
+
+@keyframes wowpulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
+100%{
+transform:scale(1);
+}
+
 }
 
 /* STATUS */
@@ -114,34 +151,45 @@ line-height:1.6;
 background:#021902;
 border:1px solid #00ff66;
 padding:12px;
+border-radius:12px;
 text-align:center;
-color:#00ff66;
+font-size:13px;
 margin-bottom:20px;
-border-radius:10px;
-font-size:14px;
-box-shadow:0 0 10px rgba(0,255,100,0.3);
+color:#00ff66;
+box-shadow:0 0 12px rgba(0,255,100,0.3);
 }
 
-/* INPUT */
+/* INPUTS */
 
 .input-box{
-margin-bottom:20px;
+margin-bottom:15px;
 }
 
-.input-box input{
+.input-box input,
+.input-box input[type=file]{
 width:100%;
 padding:14px;
-background:#0d0d0d;
-border:1px solid red;
-color:white;
-font-size:15px;
-outline:none;
 border-radius:12px;
-transition:0.3s;
+border:1px solid red;
+background:#111;
+color:white;
+font-family:'Orbitron',sans-serif;
+outline:none;
 }
 
 .input-box input:focus{
-box-shadow:0 0 15px red;
+box-shadow:0 0 12px red;
+}
+
+input[type=file]::-webkit-file-upload-button{
+background:red;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+font-family:'Orbitron',sans-serif;
+margin-right:10px;
 }
 
 /* BUTTONS */
@@ -149,19 +197,19 @@ box-shadow:0 0 15px red;
 .btn{
 width:100%;
 padding:15px;
-margin-top:15px;
 border:none;
 border-radius:12px;
-font-size:16px;
-font-family:'Orbitron',sans-serif;
-font-weight:bold;
+margin-top:14px;
 cursor:pointer;
+font-size:15px;
+font-weight:bold;
+font-family:'Orbitron',sans-serif;
 transition:0.25s;
-text-decoration:none;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 gap:10px;
+text-decoration:none;
 }
 
 .btn:hover{
@@ -169,7 +217,7 @@ transform:scale(0.98);
 }
 
 .red{
-background:#ff0000;
+background:red;
 color:white;
 box-shadow:0 0 15px rgba(255,0,0,0.6);
 }
@@ -190,9 +238,9 @@ font-weight:900;
 
 .video-box{
 margin-top:20px;
-border:1px solid red;
 border-radius:15px;
 overflow:hidden;
+border:1px solid red;
 background:black;
 box-shadow:0 0 15px rgba(255,0,0,0.3);
 }
@@ -211,38 +259,53 @@ margin-top:25px;
 
 .volume-title{
 text-align:center;
-font-size:22px;
-margin-bottom:15px;
+font-size:20px;
 color:red;
+margin-bottom:15px;
 text-shadow:0 0 10px red;
 }
 
 .slider{
 width:100%;
-appearance:none;
 height:12px;
-border-radius:30px;
+appearance:none;
 background:#111;
-outline:none;
-overflow:hidden;
+border-radius:30px;
 border:1px solid red;
+outline:none;
 }
 
 .slider::-webkit-slider-thumb{
 appearance:none;
-width:22px;
-height:22px;
+width:24px;
+height:24px;
 border-radius:50%;
 background:red;
 cursor:pointer;
-box-shadow:0 0 10px red;
+box-shadow:0 0 15px red;
 }
 
 .percent{
-margin-top:12px;
 text-align:center;
-font-size:26px;
-color:white;
+margin-top:12px;
+font-size:28px;
+}
+
+/* LOADING */
+
+.loading{
+display:none;
+margin-top:20px;
+text-align:center;
+color:#00ffcc;
+font-size:14px;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+50%{
+opacity:0.4;
+}
 }
 
 /* FOOTER */
@@ -250,22 +313,26 @@ color:white;
 .footer{
 margin-top:25px;
 text-align:center;
-font-size:13px;
-color:#aaa;
+font-size:12px;
 line-height:1.7;
+color:#888;
 }
 
-/* MOBILE FIX */
+/* MOBILE */
 
 @media(max-width:600px){
 
-.logo{
-font-size:2.3rem;
+body{
+padding:12px;
 }
 
 .container{
 padding:18px;
-border-radius:14px;
+border-radius:16px;
+}
+
+.logo{
+font-size:2.3rem;
 }
 
 .btn{
@@ -274,7 +341,11 @@ padding:14px;
 }
 
 .percent{
-font-size:22px;
+font-size:24px;
+}
+
+.wow{
+font-size:18px;
 }
 
 }
@@ -289,19 +360,29 @@ font-size:22px;
 
 <div class="container">
 
-<div class="logo">ERRORX</div>
+<div class="logo">
+ERRORX
+</div>
 
 <div class="sub">
-SOUND BOOSTER SYSTEM<br>
+CYBER AUDIO ENGINE<br>
 BY MR TWILIGHT
 </div>
 
+<div class="wow">
+⚡ WOW BOOST ACTIVATED ⚡
+</div>
+
 <div class="status">
-✅ ACCESS ACTIVE — Unlimited Booster Enabled
+✅ SYSTEM ONLINE — ERRORX ENGINE READY
 </div>
 
 <div class="input-box">
 <input type="text" placeholder="Paste YouTube Link Here">
+</div>
+
+<div class="input-box">
+<input type="file" id="fileInput" accept="video/*,audio/*">
 </div>
 
 <button class="btn red">
@@ -309,8 +390,19 @@ BY MR TWILIGHT
 </button>
 
 <button class="btn red" onclick="toggleMusic()">
-🎵 PLAY / PAUSE MUSIC
+🎵 PLAY / PAUSE
 </button>
+
+<button class="btn red" id="convertBtn">
+🎧 CONVERT TO MP3
+</button>
+
+<a id="downloadBtn"
+class="btn green"
+style="display:none;"
+download="ERRORX-MP3.mp3">
+⬇ DOWNLOAD MP3
+</a>
 
 <a href="https://whatsapp.com/channel/0029Vb5isALI1rcah6CRXm3J"
 target="_blank"
@@ -319,13 +411,13 @@ class="btn green">
 </a>
 
 <button class="btn orange">
-🔐 Logout / Switch Account
+🔐 LOGOUT / SWITCH ACCOUNT
 </button>
 
 <div class="video-box">
-<video id="video" controls>
-<source src="" type="video/mp4">
-</video>
+
+<video id="video" controls></video>
+
 </div>
 
 <div class="volume-area">
@@ -348,21 +440,54 @@ id="slider">
 
 </div>
 
+<div class="loading" id="loading">
+⚡ CONVERTING VIDEO TO MP3...
+</div>
+
 <div class="footer">
-© 2026 Made by Abdullah Suleman (MR TWILIGHT)
+© 2026 ERRORX ENGINE<br>
+Made by Abdullah Suleman (MR TWILIGHT)
 </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.6/dist/ffmpeg.min.js"></script>
 
 <script>
 
 const slider = document.getElementById("slider");
 const percent = document.getElementById("percent");
 const video = document.getElementById("video");
+const fileInput = document.getElementById("fileInput");
+const loading = document.getElementById("loading");
+const downloadBtn = document.getElementById("downloadBtn");
 
 let audioContext;
 let gainNode;
 let source;
+let uploadedFile;
+
+/* FILE UPLOAD */
+
+fileInput.addEventListener("change", function(e){
+
+const file = e.target.files[0];
+
+if(file){
+
+uploadedFile = file;
+
+const url = URL.createObjectURL(file);
+
+video.src = url;
+
+video.play();
+
+}
+
+});
+
+/* BOOSTER */
 
 slider.oninput = function(){
 
@@ -390,15 +515,74 @@ gainNode.gain.value = this.value / 100;
 
 };
 
+/* PLAY PAUSE */
+
 function toggleMusic(){
 
 if(video.paused){
+
 video.play();
+
 }else{
+
 video.pause();
+
 }
 
 }
+
+/* MP3 CONVERTER */
+
+document.getElementById("convertBtn").addEventListener("click", async () => {
+
+if(!uploadedFile){
+
+alert("Upload video first!");
+
+return;
+
+}
+
+loading.style.display = "block";
+
+const { createFFmpeg, fetchFile } = FFmpeg;
+
+const ffmpeg = createFFmpeg({ log:true });
+
+await ffmpeg.load();
+
+ffmpeg.FS('writeFile','input.mp4',await fetchFile(uploadedFile));
+
+await ffmpeg.run(
+'-i',
+'input.mp4',
+'-q:a',
+'0',
+'-map',
+'a',
+'output.mp3'
+);
+
+const data = ffmpeg.FS('readFile','output.mp3');
+
+const mp3Blob = new Blob(
+[data.buffer],
+{ type:'audio/mp3' }
+);
+
+const mp3Url = URL.createObjectURL(mp3Blob);
+
+downloadBtn.href = mp3Url;
+
+downloadBtn.style.display = "flex";
+
+loading.style.display = "none";
+
+});
+
+/* START */
+
+percent.innerHTML = slider.value + "%";
 
 </script>
 
