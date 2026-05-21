@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>ERRORX ENGINE</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
@@ -28,7 +30,7 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:15px;
+padding:12px;
 position:relative;
 }
 
@@ -40,7 +42,7 @@ width:350px;
 height:350px;
 border-radius:50%;
 filter:blur(120px);
-opacity:0.18;
+opacity:0.15;
 z-index:-1;
 animation:float 8s infinite alternate ease-in-out;
 }
@@ -66,7 +68,7 @@ transform:translate(40px,40px);
 }
 }
 
-/* MAIN CONTAINER */
+/* CONTAINER */
 
 .container{
 width:100%;
@@ -74,7 +76,7 @@ max-width:520px;
 background:#050505;
 border:2px solid red;
 border-radius:20px;
-padding:22px;
+padding:20px;
 box-shadow:
 0 0 15px red,
 0 0 40px rgba(255,0,0,0.5);
@@ -87,23 +89,44 @@ overflow:hidden;
 font-size:3rem;
 font-weight:900;
 text-align:center;
-margin-bottom:10px;
 color:red;
+margin-bottom:10px;
 letter-spacing:3px;
+
 text-shadow:
 0 0 5px red,
 0 0 15px red,
 2px 0 cyan;
+
 animation:glitch 1s infinite;
 }
 
 @keyframes glitch{
-0%{transform:translate(0);}
-20%{transform:translate(-2px,2px);}
-40%{transform:translate(2px,-2px);}
-60%{transform:translate(-2px,-1px);}
-80%{transform:translate(2px,1px);}
-100%{transform:translate(0);}
+
+0%{
+transform:translate(0);
+}
+
+20%{
+transform:translate(-2px,2px);
+}
+
+40%{
+transform:translate(2px,-2px);
+}
+
+60%{
+transform:translate(-2px,-1px);
+}
+
+80%{
+transform:translate(2px,1px);
+}
+
+100%{
+transform:translate(0);
+}
+
 }
 
 /* TEXT */
@@ -113,22 +136,28 @@ text-align:center;
 font-size:13px;
 color:#aaa;
 line-height:1.7;
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
 .wow{
 text-align:center;
 font-size:20px;
 color:#00ff99;
-margin-bottom:15px;
+margin-bottom:18px;
 text-shadow:0 0 15px #00ff99;
 animation:wow 1.2s infinite;
 }
 
 @keyframes wow{
-0%{transform:scale(1);}
-50%{transform:scale(1.08);}
-100%{transform:scale(1);}
+0%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.08);
+}
+100%{
+transform:scale(1);
+}
 }
 
 /* STATUS */
@@ -140,12 +169,12 @@ padding:12px;
 border-radius:12px;
 text-align:center;
 font-size:13px;
-margin-bottom:20px;
+margin-bottom:18px;
 color:#00ff66;
 box-shadow:0 0 12px rgba(0,255,100,0.3);
 }
 
-/* INPUTS */
+/* INPUT */
 
 .input-box{
 margin-bottom:15px;
@@ -153,6 +182,7 @@ margin-bottom:15px;
 
 .input-box input,
 .input-box input[type=file]{
+
 width:100%;
 padding:14px;
 border-radius:12px;
@@ -161,6 +191,7 @@ background:#111;
 color:white;
 font-family:'Orbitron',sans-serif;
 outline:none;
+
 }
 
 .input-box input:focus{
@@ -168,6 +199,7 @@ box-shadow:0 0 12px red;
 }
 
 input[type=file]::-webkit-file-upload-button{
+
 background:red;
 color:white;
 border:none;
@@ -176,11 +208,13 @@ border-radius:8px;
 cursor:pointer;
 font-family:'Orbitron',sans-serif;
 margin-right:10px;
+
 }
 
 /* BUTTONS */
 
 .btn{
+
 width:100%;
 padding:15px;
 border:none;
@@ -196,6 +230,7 @@ justify-content:center;
 align-items:center;
 gap:10px;
 text-decoration:none;
+
 }
 
 .btn:hover{
@@ -308,17 +343,13 @@ color:#888;
 
 @media(max-width:600px){
 
-body{
-padding:10px;
+.logo{
+font-size:2.3rem;
 }
 
 .container{
-padding:18px;
+padding:16px;
 border-radius:16px;
-}
-
-.logo{
-font-size:2.3rem;
 }
 
 .btn{
@@ -331,7 +362,7 @@ font-size:24px;
 }
 
 .wow{
-font-size:18px;
+font-size:17px;
 }
 
 }
@@ -360,59 +391,80 @@ BY MR TWILIGHT
 </div>
 
 <div class="status" id="status">
-✅ SYSTEM ONLINE — ERRORX ENGINE READY
+✅ SYSTEM ONLINE — READY
 </div>
 
-<!-- YOUTUBE LINK -->
+<!-- YOUTUBE -->
 
 <div class="input-box">
-<input type="text" id="youtubeInput" placeholder="Paste YouTube Link Here">
+<input type="text"
+placeholder="Paste YouTube Link Here">
 </div>
 
-<!-- FILE UPLOAD -->
+<!-- FILE -->
 
 <div class="input-box">
-<input type="file" id="fileInput" accept="video/*,audio/*">
+<input type="file"
+id="fileInput"
+accept="video/*,audio/*">
 </div>
 
 <!-- BUTTONS -->
 
-<button class="btn red" onclick="executeSystem()">
+<button class="btn red"
+onclick="executeSystem()">
+
 ⚡ EXECUTE SYSTEM
+
 </button>
 
-<button class="btn red" onclick="toggleMusic()">
+<button class="btn red"
+onclick="toggleMusic()">
+
 🎵 PLAY / PAUSE
+
 </button>
 
-<button class="btn red" id="convertBtn">
+<button class="btn red"
+id="convertBtn">
+
 🎧 CONVERT TO MP3
+
 </button>
 
 <a id="downloadBtn"
 class="btn green"
-style="display:none;"
-download="ERRORX-MP3.mp3">
+style="display:none;">
+
 ⬇ DOWNLOAD MP3
+
 </a>
 
 <a href="https://whatsapp.com/channel/0029Vb5isALI1rcah6CRXm3J"
 target="_blank"
 class="btn green">
+
 🔥 JOIN ERRORX CHANNEL
+
 </a>
 
-<button class="btn orange" onclick="logoutSystem()">
+<button class="btn orange"
+onclick="logoutSystem()">
+
 🔐 LOGOUT / SWITCH ACCOUNT
+
 </button>
 
 <!-- VIDEO -->
 
 <div class="video-box">
-<video id="video" controls></video>
+
+<video id="video"
+controls></video>
+
 </div>
 
-<!-- VOLUME -->
+<!-- BOOST -->
 
 <div class="volume-area">
 
@@ -420,50 +472,66 @@ class="btn green">
 ERRORX BOOST CONTROL
 </div>
 
-<input
-type="range"
+<input type="range"
 min="0"
 max="300"
 value="100"
 class="slider"
 id="slider">
 
-<div class="percent" id="percent">
+<div class="percent"
+id="percent">
+
 100%
+
 </div>
 
 </div>
 
 <!-- LOADING -->
 
-<div class="loading" id="loading">
-⚡ CONVERTING VIDEO TO MP3...
+<div class="loading"
+id="loading">
+
+⚡ CONVERTING...
+
 </div>
 
 <!-- FOOTER -->
 
 <div class="footer">
+
 © 2026 ERRORX ENGINE<br>
-Made by Abdullah Suleman (MR TWILIGHT)
-</div>
+Made by Abdullah Suleman
 
 </div>
 
-<!-- FFmpeg -->
-
-<script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.6/dist/ffmpeg.min.js"></script>
+</div>
 
 <script>
 
 /* ELEMENTS */
 
-const slider = document.getElementById("slider");
-const percent = document.getElementById("percent");
-const video = document.getElementById("video");
-const fileInput = document.getElementById("fileInput");
-const loading = document.getElementById("loading");
-const downloadBtn = document.getElementById("downloadBtn");
-const statusBox = document.getElementById("status");
+const slider =
+document.getElementById("slider");
+
+const percent =
+document.getElementById("percent");
+
+const video =
+document.getElementById("video");
+
+const fileInput =
+document.getElementById("fileInput");
+
+const loading =
+document.getElementById("loading");
+
+const downloadBtn =
+document.getElementById("downloadBtn");
+
+const statusBox =
+document.getElementById("status");
 
 let audioContext;
 let gainNode;
@@ -472,15 +540,19 @@ let uploadedFile;
 
 /* FILE UPLOAD */
 
-fileInput.addEventListener("change", function(e){
+fileInput.addEventListener(
+"change",
+function(e){
 
-const file = e.target.files[0];
+const file =
+e.target.files[0];
 
 if(file){
 
 uploadedFile = file;
 
-const url = URL.createObjectURL(file);
+const url =
+URL.createObjectURL(file);
 
 video.src = url;
 
@@ -491,13 +563,15 @@ statusBox.innerHTML =
 
 }
 
-});
+}
+);
 
-/* VOLUME BOOSTER */
+/* BOOSTER */
 
 slider.oninput = function(){
 
-percent.innerHTML = this.value + "%";
+percent.innerHTML =
+this.value + "%";
 
 if(video){
 
@@ -508,14 +582,17 @@ new(window.AudioContext ||
 window.webkitAudioContext)();
 
 source =
-audioContext.createMediaElementSource(video);
+audioContext
+.createMediaElementSource(video);
 
 gainNode =
 audioContext.createGain();
 
 source.connect(gainNode);
 
-gainNode.connect(audioContext.destination);
+gainNode.connect(
+audioContext.destination
+);
 
 }
 
@@ -535,7 +612,7 @@ if(video.paused){
 video.play();
 
 statusBox.innerHTML =
-"🎵 MEDIA PLAYING";
+"🎵 PLAYING MEDIA";
 
 }else{
 
@@ -548,7 +625,7 @@ statusBox.innerHTML =
 
 }
 
-/* EXECUTE SYSTEM */
+/* EXECUTE */
 
 function executeSystem(){
 
@@ -556,7 +633,7 @@ statusBox.innerHTML =
 "⚡ ERRORX ENGINE ACTIVATED";
 
 document.querySelector(".wow")
-innerHTML =
+.innerHTML =
 "🔥 CYBER BOOST ENABLED 🔥";
 
 navigator.vibrate?.(200);
@@ -567,7 +644,8 @@ navigator.vibrate?.(200);
 
 function logoutSystem(){
 
-const ask = confirm(
+const ask =
+confirm(
 "Do you want to logout?"
 );
 
@@ -579,82 +657,100 @@ location.reload();
 
 }
 
-/* MP3 CONVERTER */
+/* SIMPLE MP3 CONVERTER */
 
 document.getElementById("convertBtn")
-.addEventListener("click", async () => {
+.addEventListener(
+"click",
+async()=>{
 
 if(!uploadedFile){
 
-alert("Upload video first!");
+alert(
+"Upload video first!"
+);
 
 return;
 
 }
 
-loading.style.display = "block";
+loading.style.display =
+"block";
+
+loading.innerHTML =
+"⚡ EXTRACTING AUDIO...";
 
 try{
 
-const { createFFmpeg, fetchFile } = FFmpeg;
+const stream =
+video.captureStream();
 
-const ffmpeg = createFFmpeg({
-log:true
-});
+const recorder =
+new MediaRecorder(stream);
 
-await ffmpeg.load();
+let chunks = [];
 
-ffmpeg.FS(
-'writeFile',
-'input.mp4',
-await fetchFile(uploadedFile)
-);
+recorder.ondataavailable =
+e => {
 
-await ffmpeg.run(
-'-i',
-'input.mp4',
-'output.mp3'
-);
+chunks.push(e.data);
 
-const data = ffmpeg.FS(
-'readFile',
-'output.mp3'
-);
+};
 
-const url = URL.createObjectURL(
+recorder.onstop = ()=>{
+
+const blob =
 new Blob(
-[data.buffer],
-{ type:'audio/mp3' }
-)
+chunks,
+{type:'audio/mp3'}
 );
+
+const url =
+URL.createObjectURL(blob);
 
 downloadBtn.href = url;
 
-downloadBtn.style.display = "flex";
+downloadBtn.download =
+"ERRORX-AUDIO.mp3";
+
+downloadBtn.style.display =
+"flex";
 
 loading.innerHTML =
-"✅ MP3 READY TO DOWNLOAD";
+"✅ MP3 READY";
 
 statusBox.innerHTML =
-"🎧 CONVERSION SUCCESSFUL";
+"🔥 AUDIO EXTRACTED";
 
-}catch(error){
+};
 
-console.log(error);
+recorder.start();
+
+video.play();
+
+setTimeout(()=>{
+
+recorder.stop();
+
+video.pause();
+
+},10000);
+
+}catch(err){
+
+console.log(err);
 
 loading.innerHTML =
-"❌ CONVERSION FAILED";
-
-statusBox.innerHTML =
-"⚠ BROWSER NOT SUPPORTED";
+"❌ FAILED";
 
 alert(
-"Converter failed on this browser!"
+"Browser not supported"
 );
 
 }
 
-});
+}
+);
 
 /* INIT */
 
