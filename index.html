@@ -25,10 +25,10 @@ background:#000;
 font-family:'Orbitron',sans-serif;
 color:white;
 min-height:100vh;
-padding:20px;
 display:flex;
 justify-content:center;
 align-items:center;
+padding:15px;
 position:relative;
 }
 
@@ -66,7 +66,7 @@ transform:translate(40px,40px);
 }
 }
 
-/* MAIN */
+/* MAIN CONTAINER */
 
 .container{
 width:100%;
@@ -90,25 +90,23 @@ text-align:center;
 margin-bottom:10px;
 color:red;
 letter-spacing:3px;
-
 text-shadow:
 0 0 5px red,
 0 0 15px red,
 2px 0 cyan;
-
 animation:glitch 1s infinite;
 }
 
 @keyframes glitch{
-
 0%{transform:translate(0);}
 20%{transform:translate(-2px,2px);}
 40%{transform:translate(2px,-2px);}
 60%{transform:translate(-2px,-1px);}
 80%{transform:translate(2px,1px);}
 100%{transform:translate(0);}
-
 }
+
+/* TEXT */
 
 .sub{
 text-align:center;
@@ -118,31 +116,19 @@ line-height:1.7;
 margin-bottom:20px;
 }
 
-/* WOW EFFECT */
-
 .wow{
 text-align:center;
-font-size:22px;
+font-size:20px;
 color:#00ff99;
 margin-bottom:15px;
 text-shadow:0 0 15px #00ff99;
-animation:wowpulse 1.2s infinite;
+animation:wow 1.2s infinite;
 }
 
-@keyframes wowpulse{
-
-0%{
-transform:scale(1);
-}
-
-50%{
-transform:scale(1.08);
-}
-
-100%{
-transform:scale(1);
-}
-
+@keyframes wow{
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
 }
 
 /* STATUS */
@@ -323,7 +309,7 @@ color:#888;
 @media(max-width:600px){
 
 body{
-padding:12px;
+padding:10px;
 }
 
 .container{
@@ -373,19 +359,25 @@ BY MR TWILIGHT
 ⚡ WOW BOOST ACTIVATED ⚡
 </div>
 
-<div class="status">
+<div class="status" id="status">
 ✅ SYSTEM ONLINE — ERRORX ENGINE READY
 </div>
 
+<!-- YOUTUBE LINK -->
+
 <div class="input-box">
-<input type="text" placeholder="Paste YouTube Link Here">
+<input type="text" id="youtubeInput" placeholder="Paste YouTube Link Here">
 </div>
+
+<!-- FILE UPLOAD -->
 
 <div class="input-box">
 <input type="file" id="fileInput" accept="video/*,audio/*">
 </div>
 
-<button class="btn red">
+<!-- BUTTONS -->
+
+<button class="btn red" onclick="executeSystem()">
 ⚡ EXECUTE SYSTEM
 </button>
 
@@ -410,15 +402,17 @@ class="btn green">
 🔥 JOIN ERRORX CHANNEL
 </a>
 
-<button class="btn orange">
+<button class="btn orange" onclick="logoutSystem()">
 🔐 LOGOUT / SWITCH ACCOUNT
 </button>
 
+<!-- VIDEO -->
+
 <div class="video-box">
-
 <video id="video" controls></video>
-
 </div>
+
+<!-- VOLUME -->
 
 <div class="volume-area">
 
@@ -440,9 +434,13 @@ id="slider">
 
 </div>
 
+<!-- LOADING -->
+
 <div class="loading" id="loading">
 ⚡ CONVERTING VIDEO TO MP3...
 </div>
+
+<!-- FOOTER -->
 
 <div class="footer">
 © 2026 ERRORX ENGINE<br>
@@ -451,9 +449,13 @@ Made by Abdullah Suleman (MR TWILIGHT)
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.6/dist/ffmpeg.min.js"></script>
+<!-- FFmpeg -->
+
+<script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.6/dist/ffmpeg.min.js"></script>
 
 <script>
+
+/* ELEMENTS */
 
 const slider = document.getElementById("slider");
 const percent = document.getElementById("percent");
@@ -461,6 +463,7 @@ const video = document.getElementById("video");
 const fileInput = document.getElementById("fileInput");
 const loading = document.getElementById("loading");
 const downloadBtn = document.getElementById("downloadBtn");
+const statusBox = document.getElementById("status");
 
 let audioContext;
 let gainNode;
@@ -483,11 +486,14 @@ video.src = url;
 
 video.play();
 
+statusBox.innerHTML =
+"🔥 FILE LOADED SUCCESSFULLY";
+
 }
 
 });
 
-/* BOOSTER */
+/* VOLUME BOOSTER */
 
 slider.oninput = function(){
 
@@ -497,11 +503,15 @@ if(video){
 
 if(!audioContext){
 
-audioContext = new(window.AudioContext || window.webkitAudioContext)();
+audioContext =
+new(window.AudioContext ||
+window.webkitAudioContext)();
 
-source = audioContext.createMediaElementSource(video);
+source =
+audioContext.createMediaElementSource(video);
 
-gainNode = audioContext.createGain();
+gainNode =
+audioContext.createGain();
 
 source.connect(gainNode);
 
@@ -509,7 +519,8 @@ gainNode.connect(audioContext.destination);
 
 }
 
-gainNode.gain.value = this.value / 100;
+gainNode.gain.value =
+this.value / 100;
 
 }
 
@@ -523,9 +534,46 @@ if(video.paused){
 
 video.play();
 
+statusBox.innerHTML =
+"🎵 MEDIA PLAYING";
+
 }else{
 
 video.pause();
+
+statusBox.innerHTML =
+"⏸ MEDIA PAUSED";
+
+}
+
+}
+
+/* EXECUTE SYSTEM */
+
+function executeSystem(){
+
+statusBox.innerHTML =
+"⚡ ERRORX ENGINE ACTIVATED";
+
+document.querySelector(".wow")
+innerHTML =
+"🔥 CYBER BOOST ENABLED 🔥";
+
+navigator.vibrate?.(200);
+
+}
+
+/* LOGOUT */
+
+function logoutSystem(){
+
+const ask = confirm(
+"Do you want to logout?"
+);
+
+if(ask){
+
+location.reload();
 
 }
 
@@ -533,7 +581,8 @@ video.pause();
 
 /* MP3 CONVERTER */
 
-document.getElementById("convertBtn").addEventListener("click", async () => {
+document.getElementById("convertBtn")
+.addEventListener("click", async () => {
 
 if(!uploadedFile){
 
@@ -545,44 +594,72 @@ return;
 
 loading.style.display = "block";
 
+try{
+
 const { createFFmpeg, fetchFile } = FFmpeg;
 
-const ffmpeg = createFFmpeg({ log:true });
+const ffmpeg = createFFmpeg({
+log:true
+});
 
 await ffmpeg.load();
 
-ffmpeg.FS('writeFile','input.mp4',await fetchFile(uploadedFile));
+ffmpeg.FS(
+'writeFile',
+'input.mp4',
+await fetchFile(uploadedFile)
+);
 
 await ffmpeg.run(
 '-i',
 'input.mp4',
-'-q:a',
-'0',
-'-map',
-'a',
 'output.mp3'
 );
 
-const data = ffmpeg.FS('readFile','output.mp3');
-
-const mp3Blob = new Blob(
-[data.buffer],
-{ type:'audio/mp3' }
+const data = ffmpeg.FS(
+'readFile',
+'output.mp3'
 );
 
-const mp3Url = URL.createObjectURL(mp3Blob);
+const url = URL.createObjectURL(
+new Blob(
+[data.buffer],
+{ type:'audio/mp3' }
+)
+);
 
-downloadBtn.href = mp3Url;
+downloadBtn.href = url;
 
 downloadBtn.style.display = "flex";
 
-loading.style.display = "none";
+loading.innerHTML =
+"✅ MP3 READY TO DOWNLOAD";
+
+statusBox.innerHTML =
+"🎧 CONVERSION SUCCESSFUL";
+
+}catch(error){
+
+console.log(error);
+
+loading.innerHTML =
+"❌ CONVERSION FAILED";
+
+statusBox.innerHTML =
+"⚠ BROWSER NOT SUPPORTED";
+
+alert(
+"Converter failed on this browser!"
+);
+
+}
 
 });
 
-/* START */
+/* INIT */
 
-percent.innerHTML = slider.value + "%";
+percent.innerHTML =
+slider.value + "%";
 
 </script>
 
